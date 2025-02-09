@@ -7,27 +7,31 @@
 
 import SwiftUI
 //Custom ViewModifiers
-struct Title : ViewModifier {
+struct Watermark : ViewModifier {
+    var text: String
     func body(content: Content) -> some View {
-        content
-            .padding()
-            .font(.largeTitle)
-            .background(.blue)
-            .foregroundStyle(.white)
-            .clipShape(.rect(cornerRadius: 15))
+        ZStack(alignment: .bottomTrailing){
+            content
+            Text(text)
+                .font(.caption)
+                .padding(5)
+                .background(.black)
+                .foregroundStyle(.white)
+        }
     }
 }
 
 extension View {
-    func TitleStyle() -> some View {
-        modifier(Title())
+    func Watermarked(with text: String ) -> some View {
+        modifier(Watermark(text: text))
     }
 }
 
 struct ContentView: View {
     var body: some View {
-       Text("Hello World")
-            .TitleStyle()
+        Color.blue
+            .frame(width: 400, height: 300)
+            .Watermarked(with: "Copyright @2025")
     }
 }
 #Preview {
