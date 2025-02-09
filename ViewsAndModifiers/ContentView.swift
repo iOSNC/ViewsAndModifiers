@@ -10,10 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @State private var isUserRead = false
     var body: some View {
-        Button("Hello World!") {
-            isUserRead.toggle()
+        VStack {
+            Text("Hello World")
+                .font(.largeTitle) //this child modifier overrides the external vstack font modifer
+            Text("Hello World")
+            Text("Hello World")
+            Text("Hello World")
+            Text("Hello World")
         }
-        .foregroundStyle(isUserRead ? .blue: .red)
+        .font(.title) //applies to all elements inside the VStack, but child modifers take precedence
     }
 }
 
