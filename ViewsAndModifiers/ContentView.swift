@@ -6,32 +6,28 @@
 //
 
 import SwiftUI
+//Custom Vieww
+struct capsuleText: View {
+    var text: String
+    var body: some View {
+        Text(text)
+            .padding()
+            .font(.largeTitle)
+            .background(.blue)
+            .clipShape(.rect(cornerRadius: 15))
+    }
+}
 
 struct ContentView: View {
-    //computed properties for views
-    var view1: some View {
-        VStack {
-            Text("Hello world")
-            Text("How are you")
-        }
-    }
-    //using @ViewBuilder is recommended because that is exactly how body property is defined
-    @ViewBuilder var view2 : some View {
-        HStack {
-            Text("I am fine..")
-            Text("How r u doig")
-        }
-    }
-    
     var body: some View {
-        VStack {
-            view1
-            view2
+        VStack(spacing: 15) {
+            capsuleText(text: "Hello")
+                .foregroundStyle(.white)
+            capsuleText(text: "World")
                 .foregroundStyle(.red)
         }
     }
 }
-
 #Preview {
     ContentView()
 }
