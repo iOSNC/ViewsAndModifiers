@@ -23,11 +23,30 @@ struct GridStack<Content: View> : View {
     }
 }
 
+//custom View Modifier
+struct largeBlueTitle : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .foregroundStyle(.blue)
+            .font(.largeTitle.weight(.semibold))
+    }
+}
+
+extension View {
+    func LargeBlueTitle() -> some View {
+        modifier(largeBlueTitle())
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        GridStack(rows: 10, columns: 3) { (row, column) in
-            Text("R\(row)C\(column)")
-            Image(systemName: "\(row + column).circle")
+        VStack {
+            GridStack(rows: 3, columns: 2) { (row, column) in
+                Text("R\(row)C\(column)")
+                Image(systemName: "\(row + column).circle")
+            }
+            .LargeBlueTitle()
         }
     }
 }
