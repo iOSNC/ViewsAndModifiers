@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isUserRead = false
+    //computed properties for views
+    var view1: some View {
+        VStack {
+            Text("Hello world")
+            Text("How are you")
+        }
+    }
+    //using @ViewBuilder is recommended because that is exactly how body property is defined
+    @ViewBuilder var view2 : some View {
+        HStack {
+            Text("I am fine..")
+            Text("How r u doig")
+        }
+    }
+    
     var body: some View {
         VStack {
-            Text("Hello World")
-                .font(.largeTitle) //this child modifier overrides the external vstack font modifer
-            Text("Hello World")
-            Text("Hello World")
-            Text("Hello World")
-            Text("Hello World")
+            view1
+            view2
+                .foregroundStyle(.red)
         }
-        .font(.title) //applies to all elements inside the VStack, but child modifers take precedence
     }
 }
 
