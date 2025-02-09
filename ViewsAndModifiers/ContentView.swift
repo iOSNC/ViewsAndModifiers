@@ -6,26 +6,28 @@
 //
 
 import SwiftUI
-//Custom Vieww
-struct capsuleText: View {
-    var text: String
-    var body: some View {
-        Text(text)
+//Custom ViewModifiers
+struct Title : ViewModifier {
+    func body(content: Content) -> some View {
+        content
             .padding()
             .font(.largeTitle)
             .background(.blue)
+            .foregroundStyle(.white)
             .clipShape(.rect(cornerRadius: 15))
+    }
+}
+
+extension View {
+    func TitleStyle() -> some View {
+        modifier(Title())
     }
 }
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 15) {
-            capsuleText(text: "Hello")
-                .foregroundStyle(.white)
-            capsuleText(text: "World")
-                .foregroundStyle(.red)
-        }
+       Text("Hello World")
+            .TitleStyle()
     }
 }
 #Preview {
