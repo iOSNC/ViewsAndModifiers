@@ -8,20 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isUserRead = false
     var body: some View {
         Button("Hello World!") {
-            print(type(of: self.body))
+            isUserRead.toggle()
         }
-        .padding()
-        .background(.red)
-        .padding()
-        .background(.blue)
-        .padding()
-        .background(.green)
-        .padding()
-        .background(.pink)
-        .padding()
-        .background(.yellow)
+        .foregroundStyle(isUserRead ? .blue: .red)
     }
 }
 
